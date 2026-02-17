@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>911Life. | 20代の911オーナーが語るリアルな日常</title>
+    <meta name="description" content="911Life. - ポルシェ911（996）オーナーのリアルな日常。DIY整備、維持費、レビュー、購入記録を発信するカーライフブログ。">
+    <meta property="og:title" content="911Life. | 20代の911オーナーが語るリアルな日常">
+    <meta property="og:description" content="ポルシェ911（996）オーナーのリアルな日常を発信するカーライフブログ。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://my911story.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@400;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           911Life. Landing Page
+           Based on My 911 Story Theme v3.2
+           ============================================ */
+
+        :root {
+            --color-bg: #0a0a0a;
+            --color-panel: #1a1a1a;
+            --color-text: #d0d0d0;
+            --color-heading: #ffffff;
+            --color-accent: #c0392b;
+            --color-border: #2a2a2a;
+            --color-meta: #888888;
+            --font-sans: 'Montserrat', sans-serif;
+            --font-serif: 'Noto Serif JP', serif;
+            --font-ui: 'Inter', sans-serif;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-serif);
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.8;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--color-heading);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--color-accent);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ---- Hero Section ---- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(192, 57, 43, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+        }
+
+        /* Animated grain overlay */
+        .grain {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            z-index: 9999;
+        }
+
+        .hero-logo {
+            font-family: var(--font-sans);
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--color-heading);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s 0.3s forwards;
+        }
+
+        .hero-logo .dot {
+            color: var(--color-accent);
+        }
+
+        .hero-tagline {
+            font-family: var(--font-ui);
+            font-size: clamp(0.75rem, 2vw, 0.95rem);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-meta);
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s 0.6s forwards;
+        }
+
+        .hero-description {
+            font-family: var(--font-serif);
+            font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+            color: var(--color-text);
+            max-width: 600px;
+            line-height: 2;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s 0.8s forwards;
+        }
+
+        /* ---- Divider ---- */
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: var(--color-accent);
+            margin: 2rem auto;
+            opacity: 0;
+            animation: fadeUp 1s 0.7s forwards;
+        }
+
+        /* ---- CTA / Links ---- */
+        .hero-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s 1s forwards;
+        }
+
+        .hero-links a {
+            font-family: var(--font-ui);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 1rem 2.5rem;
+            border: 1px solid var(--color-border);
+            color: var(--color-heading);
+            background: transparent;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .hero-links a:hover {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(192, 57, 43, 0.3);
+        }
+
+        .hero-links a svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-links a:hover svg {
+            transform: scale(1.15);
+        }
+
+        /* ---- Info Cards ---- */
+        .info-section {
+            padding: 5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--color-panel);
+            border: 1px solid var(--color-border);
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .info-card h3 {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .info-card p {
+            font-size: 0.9rem;
+            color: var(--color-meta);
+            line-height: 1.8;
+        }
+
+        /* ---- Footer ---- */
+        .site-footer {
+            border-top: 1px solid var(--color-border);
+            padding: 3rem 2rem;
+            text-align: center;
+            background: #000;
+        }
+
+        .footer-copy {
+            font-family: var(--font-ui);
+            font-size: 0.7rem;
+            color: var(--color-meta);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* ---- Scroll indicator ---- */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeUp 1s 1.3s forwards;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 1px;
+            height: 40px;
+            background: var(--color-border);
+            margin: 0 auto 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-indicator span::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-accent);
+            animation: scrollLine 2s infinite;
+        }
+
+        .scroll-indicator p {
+            font-family: var(--font-ui);
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-meta);
+        }
+
+        /* ---- Animations ---- */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scrollLine {
+            0% { top: -100%; }
+            50% { top: 100%; }
+            100% { top: 100%; }
+        }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 600px) {
+            .hero-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-links a {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1 class="hero-logo">911Life<span class="dot">.</span></h1>
+        <p class="hero-tagline">Porsche 996 Carrera 4S — Driven by Passion</p>
+        <div class="divider"></div>
+        <p class="hero-description">
+            20代の会社員が手に入れた、ポルシェ911（996）。<br>
+            DIY整備、リアルな維持費、日々のカーライフを記録する<br>
+            パーソナルブログです。
+        </p>
+
+        <div class="hero-links">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/></svg>
+                Instagram
+            </a>
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                X
+            </a>
+        </div>
+
+        <div class="scroll-indicator">
+            <span></span>
+            <p>Scroll</p>
+        </div>
+    </section>
+
+    <!-- Info -->
+    <section class="info-section">
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Vehicle</h3>
+                <p>Porsche 911 (Type 996)<br>Carrera 4S<br>2004 Model</p>
+            </div>
+            <div class="info-card">
+                <h3>Owner</h3>
+                <p>SHIN<br>20代・会社員<br>DIYメンテナンス派</p>
+            </div>
+            <div class="info-card">
+                <h3>Contents</h3>
+                <p>DIY整備記録<br>維持費レポート<br>カーライフコラム</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p class="footer-copy">&copy; 2026 911Life. All rights reserved.</p>
+    </footer>
+</body>
+</html>
